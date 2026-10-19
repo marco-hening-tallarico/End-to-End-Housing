@@ -33,3 +33,28 @@ class ZipDataIngestor(DataIngestor):
         df = pd.read_csv(csv_file_path)
 
         return df
+
+class DataIngestorFactory:
+    @staticmethod
+    def get_data_ingestor(file_extension: str) -> DataIngestor:
+        """Factory method to return the appropriate DataIngestor based on file extension"""
+        if file_extension == '.zip':
+            return ZipDataIngestor()
+        else:
+            raise ValueError(f"No DataIngestor available for the given file extension: {file_extension}")
+
+if __name__ == "__main__":
+    # specify the file path
+    # file_path = "path/to/your/file.zip"  # Update this to your actual file path
+    # Determine the file extension
+    # file_extension = os.path.splitext(file_path)[1]
+    # 
+    # # Get the appropriate DataIngestor
+    # data_ingestor = DataIngestorFactory.get_data_ingestor(file_extension)
+    # 
+    # # Ingest the data and get the DataFrame
+    # df = data_ingestor.ingest(file_path)
+    # 
+    # Now df contains the ingested data from the extracted CSV file, and you can proceed with further processing or analysis.
+    # # print(df.head())  # Display the first few rows of the DataFrame
+    pass
